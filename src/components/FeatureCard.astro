@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  accent?: string;
+}
+
+const { title, body, accent = "Signal" } = Astro.props;
+---
+
+<article class="feature-card">
+  <div class="feature-accent">{accent}</div>
+  <h3>{title}</h3>
+  <p>{body}</p>
+</article>

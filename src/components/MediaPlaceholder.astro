@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  caption: string;
+  height?: "short" | "medium" | "tall";
+}
+
+const { title, caption, height = "medium" } = Astro.props;
+---
+
+<figure class={`media-placeholder media-${height}`}>
+  <div class="media-grid"></div>
+  <div class="media-content">
+    <span class="media-tag">Placeholder</span>
+    <strong>{title}</strong>
+    <figcaption>{caption}</figcaption>
+  </div>
+</figure>

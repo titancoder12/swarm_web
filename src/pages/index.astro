@@ -1,0 +1,331 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FeatureCard from "../components/FeatureCard.astro";
+import MediaPlaceholder from "../components/MediaPlaceholder.astro";
+import MetricCard from "../components/MetricCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+
+const pillars = [
+  {
+    title: "Stigmergy",
+    body: "Agents do not need a global planner. They coordinate through changes in a shared environment, inspired by how ant colonies build route structure from local action.",
+    accent: "Theory"
+  },
+  {
+    title: "Digital Pheromones",
+    body: "Mission Control maintains an authoritative field that robots can query in simulator-compatible form, giving physical agents access to a shared, decaying memory.",
+    accent: "Shared Memory"
+  },
+  {
+    title: "Sim-to-Real Transfer",
+    body: "A learned decentralized policy is deployed onto a physical platform with BLE, TCP, relay, camera sensing, and a real operator-facing command center.",
+    accent: "Embodiment"
+  }
+];
+
+const architecture = [
+  {
+    title: "Simulation Environment",
+    body: "A custom multi-agent environment models targets, obstacles, lidar, agent-local observations, and pheromone dynamics for decentralized policy learning."
+  },
+  {
+    title: "Learning Stack",
+    body: "The project trains recurrent MAPPO policies under a staged curriculum, preserving decentralized execution while using richer training-time structure."
+  },
+  {
+    title: "Mission Control",
+    body: "A live desktop command center visualizes robots, maintains the digital pheromone field, and bridges simulator semantics into physical deployment."
+  },
+  {
+    title: "Robot Runtime",
+    body: "The physical stack runs policy inference on-device and integrates sensing, camera-based target cues, communication transport, and motion control."
+  }
+];
+
+const systemFlow = [
+  "Each agent perceives only local structure: lidar, nearby target cues, neighbor geometry, heading, speed, and pheromone samples.",
+  "The learned policy selects one discrete action combining throttle, turning, and optional deposit behavior.",
+  "Mission Control updates the global digital pheromone field and answers SENSE requests with simulator-compatible forward samples.",
+  "Successful return paths become reusable environmental information rather than explicit agent-to-agent messages."
+];
+
+const implementation = [
+  {
+    title: "Observation Contract",
+    body: "The deployed system preserves the simulator’s structured observation layout rather than replacing it with raw image input, which keeps sim-to-real alignment tractable.",
+    accent: "Policy Interface"
+  },
+  {
+    title: "Transport Flexibility",
+    body: "The system supports BLE, direct TCP, and relay-based communication, allowing the same core protocol to operate across laptop, simulator, and Raspberry Pi robot workflows.",
+    accent: "Connectivity"
+  },
+  {
+    title: "Camera Integration",
+    body: "A Pi camera path now supplies compact target features into the policy. The implementation stays backward compatible by falling back safely when detection is unavailable.",
+    accent: "Perception"
+  }
+];
+
+const lessons = [
+  "The project is strongest when it treats collective behavior as an emergent systems problem rather than a centralized planning problem.",
+  "Sim-to-real transfer depends less on flashy models than on preserving observation semantics and building reliable transport and runtime infrastructure.",
+  "Negative or mixed training results are informative: they exposed where route-reuse tasks, curriculum design, and detector robustness become the real bottlenecks."
+];
+
+const futureWork = [
+  "Class-aware target detection using a learned detector such as YOLO, still mapped into the current compact policy features.",
+  "Stronger route-reuse curriculum design for more structured environments and larger swarms.",
+  "Improved physical localization and multi-robot deployment so the embodied system can move beyond single-robot demonstrations."
+];
+---
+
+<BaseLayout
+  title="Artificial Collective Intelligence"
+  description="Carpenter ant-inspired stigmergic swarm robotics using deep reinforcement learning, digital pheromones, Mission Control, and physical robots."
+>
+  <main>
+    <section class="hero">
+      <div class="hero-backdrop"></div>
+      <div class="hero-noise"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-chip">GVRSF 2026 · Swarm Robotics · Physical AI</div>
+          <h1>Artificial collective intelligence built from local signals, digital pheromones, and real robots.</h1>
+          <p class="hero-text">
+            Inspired by carpenter ants, this project explores how decentralized
+            agents can learn to coordinate through shared environmental memory
+            rather than centralized control. It spans theory, simulator design,
+            reinforcement learning, Mission Control infrastructure, and a
+            physical robotic platform.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#overview">Explore the project</a>
+            <a class="button button-ghost" href="#robot">See the physical robot</a>
+            <a class="button button-ghost" href="https://github.com/YOUR-ORG/YOUR-REPO" target="_blank" rel="noreferrer">View GitHub</a>
+          </div>
+          <div class="hero-metrics">
+            <MetricCard value="23D" label="Per-frame agent observation" detail="Structured local state, stacked through time." />
+            <MetricCard value="MAPPO" label="Learning approach" detail="Recurrent decentralized execution with curriculum training." />
+            <MetricCard value="Sim → Real" label="Deployment path" detail="Mission Control, camera sensing, and robot runtime integration." />
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="signal-panel signal-panel-large">
+            <div class="signal-header">
+              <span>Mission Control Field</span>
+              <span>Live Conceptual View</span>
+            </div>
+            <div class="signal-field">
+              <div class="field-core"></div>
+              <div class="field-ring field-ring-1"></div>
+              <div class="field-ring field-ring-2"></div>
+              <div class="field-ring field-ring-3"></div>
+              <div class="agent agent-a"></div>
+              <div class="agent agent-b"></div>
+              <div class="agent agent-c"></div>
+              <div class="agent agent-d"></div>
+              <div class="trail trail-a"></div>
+              <div class="trail trail-b"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview" class="section">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Project Overview"
+          title="A swarm robotics system grounded in environmental coordination."
+          body="The project studies how collective intelligence can emerge from decentralized agents with limited local sensing. Instead of relying on a central controller, the system combines local policy inference with a shared digital pheromone field and a physical robotic testbed."
+        />
+        <div class="three-up">
+          {pillars.map((pillar) => <FeatureCard {...pillar} />)}
+        </div>
+      </div>
+    </section>
+
+    <section id="theory" class="section section-dark">
+      <div class="container split-grid">
+        <div>
+          <SectionHeading
+            eyebrow="Theory"
+            title="From carpenter ants to artificial stigmergy."
+            body="Ant colonies demonstrate coordination without central supervision. The key idea is stigmergy: agents change the environment, and later agents read those changes as actionable information. This project translates that idea into a computational and robotic system."
+          />
+          <div class="text-stack">
+            <p>
+              Each agent is intentionally limited. It does not hold a global map,
+              a broadcast state, or a centralized planner. Instead, coordinated
+              behavior emerges from repeated local interactions with geometry,
+              targets, and a shared digital field.
+            </p>
+            <p>
+              That matters because resilience often comes from redundancy and
+              local decision-making. In fragile environments, centralized
+              communication can fail. Stigmergic systems offer a different model:
+              coordination through persistent environmental structure.
+            </p>
+          </div>
+        </div>
+        <MediaPlaceholder
+          title="Stigmergy Diagram"
+          caption="Replace with a polished diagram showing agents discovering, returning, depositing, and exploiting shared route memory."
+          height="tall"
+        />
+      </div>
+    </section>
+
+    <section id="simulation" class="section">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Simulation and Learning"
+          title="A simulator designed for decentralized policy learning."
+          body="The simulation environment models targets, obstacles, lidar, movement, local observations, and pheromone dynamics. The training path uses recurrent MAPPO and a staged curriculum to teach progressively richer behaviors."
+        />
+        <div class="architecture-grid">
+          {architecture.map((item) => <FeatureCard {...item} accent="System" />)}
+        </div>
+        <div class="flow-panel">
+          <div>
+            <p class="eyebrow">Operational Flow</p>
+            <h3>How the system behaves step by step.</h3>
+          </div>
+          <ol class="flow-list">
+            {systemFlow.map((step) => <li>{step}</li>)}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="sim-to-real" class="section section-accent">
+      <div class="container split-grid reverse">
+        <MediaPlaceholder
+          title="Sim-to-Real Bridge"
+          caption="Replace with a visual connecting simulator observations, Mission Control pheromone responses, and physical robot runtime execution."
+          height="tall"
+        />
+        <div>
+          <SectionHeading
+            eyebrow="Sim-to-Real"
+            title="The bridge from simulation to embodied robotics."
+            body="The project does not stop at policy training. It carries the learned behavior into a physical stack with Mission Control, real transport layers, robot firmware, and camera-based target cues."
+          />
+          <div class="three-up compact">
+            {implementation.map((item) => <FeatureCard {...item} />)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="robot" class="section">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Physical Robot"
+          title="A real platform for testing decentralized swarm ideas."
+          body="The hardware stack turns the project from a simulator into a deployable system. The robot runtime runs policy inference on-device, integrates sensing and transport, and plugs into Mission Control without changing the core policy contract."
+        />
+        <div class="robot-showcase">
+          <MediaPlaceholder
+            title="Hero Robot Photo"
+            caption="Drop in the best photograph of the assembled robot here."
+            height="tall"
+          />
+          <div class="stack">
+            <FeatureCard
+              title="Onboard Compute"
+              body="A Raspberry Pi hosts the runtime, communication clients, and camera integration. This keeps the deployed robot close to the simulator’s structured decision loop."
+              accent="Compute"
+            />
+            <FeatureCard
+              title="Sensing and Perception"
+              body="The physical stack combines lidar-style range information, robot-local state, and an optional camera detector that fills compact target-related policy slots."
+              accent="Sensing"
+            />
+            <FeatureCard
+              title="Command and Coordination"
+              body="Mission Control acts as the live operator-facing field model, maintaining digital pheromones and visualizing robot state, trails, targets, and transport health."
+              accent="Control"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="software" class="section section-dark">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Software Architecture"
+          title="A layered system from training code to desktop coordination."
+          body="The codebase spans environment modeling, learning, inference, desktop infrastructure, and hardware deployment. The architecture is intentionally modular so simulator semantics can survive the move to physical robots."
+          align="center"
+        />
+        <div class="stack-grid">
+          <article class="stack-card">
+            <span class="stack-index">01</span>
+            <h3>Environment</h3>
+            <p>Custom swarm environment with pheromone dynamics, obstacle geometry, target logic, and structured local observations.</p>
+          </article>
+          <article class="stack-card">
+            <span class="stack-index">02</span>
+            <h3>Training</h3>
+            <p>Curriculum-driven recurrent MAPPO training for decentralized policies with richer behavior shaping and long-horizon coordination.</p>
+          </article>
+          <article class="stack-card">
+            <span class="stack-index">03</span>
+            <h3>Inference</h3>
+            <p>Robot-local policy execution preserves the decentralized contract instead of shifting control back to a central planner.</p>
+          </article>
+          <article class="stack-card">
+            <span class="stack-index">04</span>
+            <h3>Mission Control</h3>
+            <p>Desktop command center for live state aggregation, pheromone field updates, sensing replies, target markers, and operator visualization.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="lessons" class="section">
+      <div class="container">
+        <SectionHeading
+          eyebrow="Lessons and Limitations"
+          title="What the project learned by building the full stack."
+          body="The value of the work is not only in the successes. It is also in the places where training, perception, and physical deployment exposed the real boundaries of decentralized robotic intelligence."
+        />
+        <div class="quote-grid">
+          {lessons.map((lesson) => (
+            <blockquote class="insight-block">
+              <p>{lesson}</p>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="future" class="section section-footer">
+      <div class="container footer-grid">
+        <div>
+          <p class="eyebrow">Future Work</p>
+          <h2>Where the system can go next.</h2>
+          <ul class="future-list">
+            {futureWork.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="closing-panel">
+          <p class="closing-kicker">Artificial Collective Intelligence</p>
+          <p>
+            A research-engineering project on stigmergic swarm robotics, digital
+            pheromones, reinforcement learning, and the move from simulator
+            semantics to embodied physical systems.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#overview">Back to top</a>
+            <a class="button button-ghost" href="https://github.com/YOUR-ORG/YOUR-REPO" target="_blank" rel="noreferrer">GitHub repository</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
