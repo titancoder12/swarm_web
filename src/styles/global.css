@@ -389,7 +389,8 @@ main {
 }
 
 .signal-field,
-.media-placeholder {
+.media-placeholder,
+.media-figure {
   position: relative;
   overflow: hidden;
   border-radius: 26px;
@@ -481,9 +482,21 @@ main {
   align-items: flex-end;
 }
 
+.media-figure {
+  min-height: 320px;
+  margin: 0;
+}
+
 .media-short { min-height: 260px; }
 .media-medium { min-height: 360px; }
 .media-tall { min-height: 480px; }
+
+.media-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .media-content {
   position: relative;

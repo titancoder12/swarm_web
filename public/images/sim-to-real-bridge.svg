@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" fill="none">
+  <defs>
+    <linearGradient id="bg2" x1="120" y1="40" x2="1250" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A1320"/>
+      <stop offset="1" stop-color="#081119"/>
+    </linearGradient>
+    <linearGradient id="sim" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#14304A"/>
+      <stop offset="1" stop-color="#0E2236"/>
+    </linearGradient>
+    <linearGradient id="bridge" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#20341C"/>
+      <stop offset="1" stop-color="#122114"/>
+    </linearGradient>
+    <linearGradient id="real" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#3A2710"/>
+      <stop offset="1" stop-color="#24190D"/>
+    </linearGradient>
+    <linearGradient id="flow2" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#69D3FF"/>
+      <stop offset="1" stop-color="#C6FF5C"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1400" height="900" rx="36" fill="url(#bg2)"/>
+  <text x="88" y="102" fill="#EDF3F7" font-family="SF Pro Display, Segoe UI, sans-serif" font-size="48" font-weight="700">Sim-to-real bridge for decentralized swarm robotics</text>
+  <text x="88" y="146" fill="#9FB2C8" font-family="SF Pro Display, Segoe UI, sans-serif" font-size="24">The deployed robot preserves the simulator observation contract while Mission Control supplies digital pheromone replies.</text>
+
+  <rect x="86" y="200" width="378" height="560" rx="30" fill="url(#sim)" stroke="#2B5478"/>
+  <rect x="511" y="200" width="378" height="560" rx="30" fill="url(#bridge)" stroke="#5D804A"/>
+  <rect x="936" y="200" width="378" height="560" rx="30" fill="url(#real)" stroke="#8A6231"/>
+
+  <text x="126" y="256" fill="#69D3FF" font-family="SF Pro Display, Segoe UI, sans-serif" font-size="28" font-weight="700">Simulation and training</text>
+  <text x="551" y="256" fill="#C6FF5C" font-family="SF Pro Display, Segoe UI, sans-serif" font-size="28" font-weight="700">Mission Control bridge</text>
+  <text x="976" y="256" fill="#FFCB6B" font-family="SF Pro Display, Segoe UI, sans-serif" font-size="28" font-weight="700">Physical robot runtime</text>
+
+  <g fill="#EDF3F7" font-family="SF Pro Display, Segoe UI, sans-serif">
+    <text x="126" y="330" font-size="24" font-weight="600">Environment</text>
+    <text x="126" y="368" font-size="20">• obstacles, targets, lidar</text>
+    <text x="126" y="400" font-size="20">• pheromone field dynamics</text>
+    <text x="126" y="432" font-size="20">• local structured observations</text>
+    <text x="126" y="486" font-size="24" font-weight="600">Learning stack</text>
+    <text x="126" y="524" font-size="20">• recurrent MAPPO curriculum</text>
+    <text x="126" y="556" font-size="20">• decentralized execution policy</text>
+    <text x="126" y="610" font-size="24" font-weight="600">Outputs</text>
+    <text x="126" y="648" font-size="20">• trained checkpoint</text>
+    <text x="126" y="680" font-size="20">• observation / action contract</text>
+  </g>
+
+  <g fill="#F5FFE2" font-family="SF Pro Display, Segoe UI, sans-serif">
+    <text x="551" y="330" font-size="24" font-weight="600">Field model</text>
+    <text x="551" y="368" font-size="20">• authoritative digital pheromone map</text>
+    <text x="551" y="400" font-size="20">• target and robot visualization</text>
+    <text x="551" y="454" font-size="24" font-weight="600">Protocol</text>
+    <text x="551" y="492" font-size="20">• POS / LIDAR / TARGET telemetry</text>
+    <text x="551" y="524" font-size="20">• SENSE → PHER_RESP replies</text>
+    <text x="551" y="578" font-size="24" font-weight="600">Transports</text>
+    <text x="551" y="616" font-size="20">• BLE</text>
+    <text x="551" y="648" font-size="20">• direct TCP</text>
+    <text x="551" y="680" font-size="20">• relay mode</text>
+  </g>
+
+  <g fill="#FFF0D3" font-family="SF Pro Display, Segoe UI, sans-serif">
+    <text x="976" y="330" font-size="24" font-weight="600">On-device inference</text>
+    <text x="976" y="368" font-size="20">• checkpoint loaded on Raspberry Pi</text>
+    <text x="976" y="400" font-size="20">• same observation layout as simulator</text>
+    <text x="976" y="454" font-size="24" font-weight="600">Sensors</text>
+    <text x="976" y="492" font-size="20">• lidar-style range sampling</text>
+    <text x="976" y="524" font-size="20">• camera target features</text>
+    <text x="976" y="556" font-size="20">• robot-local pose / motion state</text>
+    <text x="976" y="610" font-size="24" font-weight="600">Actions</text>
+    <text x="976" y="648" font-size="20">• throttle</text>
+    <text x="976" y="680" font-size="20">• turn</text>
+    <text x="976" y="712" font-size="20">• optional deposit behavior</text>
+  </g>
+
+  <path d="M438 476H520" stroke="url(#flow2)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M864 476H946" stroke="url(#flow2)" stroke-width="10" stroke-linecap="round"/>
+  <polygon points="520,476 495,462 495,490" fill="#C6FF5C"/>
+  <polygon points="946,476 921,462 921,490" fill="#C6FF5C"/>
+
+  <rect x="390" y="432" width="150" height="88" rx="18" fill="#0E1824" stroke="#32526D"/>
+  <text x="414" y="468" fill="#E9F8FF" font-family="SF Pro Display, Segoe UI, sans-serif" font-size="20" font-weight="700">Checkpoint</text>
+  <text x="410" y="495" fill="#A8C9DA" font-family="SF Pro Display, Segoe UI, sans-serif" font-size="18">policy weights</text>
+
+  <rect x="816" y="432" width="148" height="88" rx="18" fill="#171F14" stroke="#6B8A56"/>
+  <text x="838" y="468" fill="#F4FFD8" font-family="SF Pro Display, Segoe UI, sans-serif" font-size="20" font-weight="700">Replies</text>
+  <text x="831" y="495" fill="#C7DFB3" font-family="SF Pro Display, Segoe UI, sans-serif" font-size="18">PHER_RESP slice</text>
+
+  <rect x="526" y="785" width="362" height="66" rx="18" fill="#0D1720" stroke="#2D4556"/>
+  <text x="559" y="827" fill="#EDF3F7" font-family="SF Pro Display, Segoe UI, sans-serif" font-size="22">Core design rule: preserve simulator semantics during physical deployment</text>
+</svg>

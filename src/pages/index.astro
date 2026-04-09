@@ -102,7 +102,7 @@ const futureWork = [
           <div class="hero-actions">
             <a class="button button-primary" href="#overview">Explore the project</a>
             <a class="button button-ghost" href="#robot">See the physical robot</a>
-            <a class="button button-ghost" href="https://github.com/YOUR-ORG/YOUR-REPO" target="_blank" rel="noreferrer">View GitHub</a>
+            <a class="button button-ghost" href="https://github.com/titancoder12/Ants" target="_blank" rel="noreferrer">View GitHub</a>
           </div>
           <div class="hero-metrics">
             <MetricCard value="23D" label="Per-frame agent observation" detail="Structured local state, stacked through time." />
@@ -170,11 +170,9 @@ const futureWork = [
             </p>
           </div>
         </div>
-        <MediaPlaceholder
-          title="Stigmergy Diagram"
-          caption="Replace with a polished diagram showing agents discovering, returning, depositing, and exploiting shared route memory."
-          height="tall"
-        />
+        <figure class="media-figure media-tall">
+          <img class="media-image" src="/images/stigmergy-diagram.svg" alt="Diagram showing agents discovering food, depositing digital pheromones on return, and later agents reusing the route." />
+        </figure>
       </div>
     </section>
 
@@ -202,11 +200,9 @@ const futureWork = [
 
     <section id="sim-to-real" class="section section-accent">
       <div class="container split-grid reverse">
-        <MediaPlaceholder
-          title="Sim-to-Real Bridge"
-          caption="Replace with a visual connecting simulator observations, Mission Control pheromone responses, and physical robot runtime execution."
-          height="tall"
-        />
+        <figure class="media-figure media-tall">
+          <img class="media-image" src="/images/sim-to-real-bridge.svg" alt="Diagram connecting the simulator, Mission Control, and the physical robot runtime through a shared observation and action contract." />
+        </figure>
         <div>
           <SectionHeading
             eyebrow="Sim-to-Real"
@@ -228,11 +224,9 @@ const futureWork = [
           body="The hardware stack turns the project from a simulator into a deployable system. The robot runtime runs policy inference on-device, integrates sensing and transport, and plugs into Mission Control without changing the core policy contract."
         />
         <div class="robot-showcase">
-          <MediaPlaceholder
-            title="Hero Robot Photo"
-            caption="Drop in the best photograph of the assembled robot here."
-            height="tall"
-          />
+          <figure class="media-figure media-tall">
+            <img class="media-image" src="/images/robot-hero.png" alt="Hero photo of the assembled swarm robot platform." />
+          </figure>
           <div class="stack">
             <FeatureCard
               title="Onboard Compute"
@@ -322,7 +316,7 @@ const futureWork = [
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#overview">Back to top</a>
-            <a class="button button-ghost" href="https://github.com/YOUR-ORG/YOUR-REPO" target="_blank" rel="noreferrer">GitHub repository</a>
+            <a class="button button-ghost" href="https://github.com/titancoder12/Ants" target="_blank" rel="noreferrer">GitHub repository</a>
           </div>
         </div>
       </div>
