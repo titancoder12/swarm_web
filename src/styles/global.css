@@ -177,6 +177,13 @@ main {
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
+.button-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: 0 0 auto;
+  margin-right: 0.55rem;
+}
+
 .button:hover {
   transform: translateY(-1px);
 }
@@ -549,5 +556,149 @@ main {
 
   .signal-panel-large {
     min-height: 420px;
+  }
+}
+
+.album-hero {
+  min-height: auto;
+  padding-top: 6rem;
+  padding-bottom: 5rem;
+}
+
+.album-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.album-copy h1 {
+  font-size: clamp(2.8rem, 6vw, 5.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  margin: 1rem 0 1.25rem;
+  max-width: 11ch;
+}
+
+.hero-photo-frame,
+.album-card,
+.video-slot,
+.repo-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.hero-photo-frame {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 32px;
+}
+
+.hero-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.album-heading {
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+.album-heading h2,
+.repo-panel h2 {
+  margin: 0.65rem 0 0.95rem;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.album-card {
+  margin: 0;
+  border-radius: 26px;
+  overflow: hidden;
+}
+
+.album-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: linear-gradient(180deg, rgba(13, 20, 31, 0.95), rgba(9, 14, 22, 0.92));
+}
+
+.album-caption {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1rem 1.05rem 1.1rem;
+}
+
+.album-caption strong,
+.video-copy strong {
+  font-size: 1.1rem;
+}
+
+.album-caption span,
+.video-copy span {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.video-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.video-slot {
+  border-radius: 26px;
+  overflow: hidden;
+}
+
+.video-preview-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: #05080d;
+}
+
+.video-copy {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1rem 1.05rem 1.1rem;
+}
+
+.video-copy code {
+  color: var(--accent-2);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88rem;
+}
+
+.repo-panel {
+  border-radius: 30px;
+  padding: 1.6rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (max-width: 1100px) {
+  .album-hero-grid,
+  .repo-panel,
+  .album-grid,
+  .video-strip {
+    grid-template-columns: 1fr;
   }
 }
